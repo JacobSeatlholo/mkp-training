@@ -2,7 +2,16 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Play, Pause, ExternalLink, Youtube, Newspaper, Volume2, VolumeX } from "lucide-react";
+import {
+  Play,
+  Pause,
+  ExternalLink,
+  Youtube,
+  Newspaper,
+  Volume2,
+  VolumeX,
+  Maximize2,
+} from "lucide-react";
 import Image from "next/image";
 
 const mediaItems = [
@@ -22,7 +31,15 @@ const galleryImages = [
   { src: "/media-4.jpg", label: "Competition" },
 ];
 
-export default function Media() {
+interface VideoPlayerProps {
+  src: string;
+  poster: string;
+  label: string;
+  subtitle: string;
+  isPrimary?: boolean;
+}
+
+function VideoPlayer({ src, poster, label, subtitle, isPrimary = false }: VideoPlayerProps) {
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -43,6 +60,111 @@ export default function Media() {
     setMuted(!muted);
   };
 
+  const handleFullscreen = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.requestFullscreen) {
+      videoRef.current.requestFullscreen();
+    }
+  };
+
+  return (
+    <div className="relative rounded-xl overflow-hidden group gradient-border">
+      {/* Label badge */}
+      <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+        <span className="bg-primary/90 backdrop-blur-sm text-white text-xs font-mono font-bold tracking-wider uppercase px-3 py-1.5 rounded-md">
+          {label}
+        </span>
+        {isPrimary && (
+          <span className="bg-white/10 backdrop-blur-sm text-white text-xs font-mono tracking-wider uppercase px-3 py-1.5 rounded-md">
+            Featured
+          </span>
+        )}
+      </div>
+
+      <video
+        ref={videoRef}
+        src={src}
+        muted
+        loop
+        playsInline
+        poster={poster}
+        className="w-full aspect-video object-cover"
+      />
+
+      {/* Overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+
+      {/* Play/Pause button */}
+      <button
+        onClick={togglePlay}
+        className="absolute inset-0 flex items-center justify-center z-10 cursor-pointer"
+        aria-label={playing ? "Pause video" : "Play video"}
+      >
+        <motion.div
+          initial={false}
+          animate={{
+            scale: playing ? 0 : 1,
+            opacity: playing ? 0 : 1,
+          }}
+          transition={{ duration: 0.2 }}
+          className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center glow-red-sm group-hover:bg-primary transition-all"
+        >
+          <Play className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1" />
+        </motion.div>
+      </button>
+
+      {/* Controls bar */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between z-10">
+        <div className="flex items-center gap-2">
+          {playing && (
+            <button
+              onClick={togglePlay}
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
+              aria-label="Pause"
+            >
+              <Pause className="w-4 h-4 text-white" />
+            </button>
+          )}
+          <button
+            onClick={toggleMute}
+            className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
+            aria-label={muted ? "Unmute" : "Mute"}
+          >
+            {muted ? (
+              <VolumeX className="w-4 h-4 text-white" />
+            ) : (
+              <Volume2 className="w-4 h-4 text-white" />
+            )}
+          </button>
+          <span className="text-white/80 text-xs sm:text-sm font-medium ml-2 hidden sm:block">
+            {subtitle}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleFullscreen}
+            className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
+            aria-label="Fullscreen"
+          >
+            <Maximize2 className="w-4 h-4 text-white" />
+          </button>
+          <a
+            href="https://youtube.com/watch?v=vsDo6ESU_Tc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/20 transition-colors"
+          >
+            <Youtube className="w-4 h-4 text-white" />
+            <span className="text-xs text-white font-medium">YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Media() {
   return (
     <section id="media" className="relative py-24 sm:py-32">
       <div className="section-divider mb-24" />
@@ -61,87 +183,42 @@ export default function Media() {
             Footage
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-            Fight nights and gym work.
+            Watch Michael in action — training sessions and fight footage from the ring.
           </p>
         </motion.div>
 
-        {/* Hero Video */}
+        {/* Primary Training Video */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <VideoPlayer
+            src="/mkp-training-video.mp4"
+            poster="/hero-portrait.jpg"
+            label="MKP Training"
+            subtitle="Michael Keegan Pienaar — Training Session"
+            isPrimary
+          />
+        </motion.div>
+
+        {/* Secondary Promo Video */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           className="mb-12"
         >
-          <div className="relative rounded-xl overflow-hidden group gradient-border">
-            <video
-              ref={videoRef}
+          <div className="max-w-2xl mx-auto">
+            <VideoPlayer
               src="/mkp-promo.mp4"
-              muted
-              loop
-              playsInline
-              poster="/hero-portrait.jpg"
-              className="w-full aspect-video object-cover"
+              poster="/corner.jpg"
+              label="Promo"
+              subtitle="Fight promo reel"
             />
-
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-            {/* Play/Pause button */}
-            <button
-              onClick={togglePlay}
-              className="absolute inset-0 flex items-center justify-center z-10 cursor-pointer"
-              aria-label={playing ? "Pause video" : "Play video"}
-            >
-              <motion.div
-                initial={false}
-                animate={{
-                  scale: playing ? 0 : 1,
-                  opacity: playing ? 0 : 1,
-                }}
-                transition={{ duration: 0.2 }}
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center glow-red-sm group-hover:bg-primary transition-all"
-              >
-                <Play className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1" />
-              </motion.div>
-            </button>
-
-            {/* Controls bar */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between z-10">
-              <div className="flex items-center gap-2">
-                {playing && (
-                  <button
-                    onClick={togglePlay}
-                    className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
-                    aria-label="Pause"
-                  >
-                    <Pause className="w-4 h-4 text-white" />
-                  </button>
-                )}
-                <button
-                  onClick={toggleMute}
-                  className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
-                  aria-label={muted ? "Unmute" : "Mute"}
-                >
-                  {muted ? (
-                    <VolumeX className="w-4 h-4 text-white" />
-                  ) : (
-                    <Volume2 className="w-4 h-4 text-white" />
-                  )}
-                </button>
-              </div>
-
-              {/* YouTube link */}
-              <a
-                href="https://youtube.com/watch?v=vsDo6ESU_Tc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/20 transition-colors"
-              >
-                <Youtube className="w-4 h-4 text-white" />
-                <span className="text-xs text-white font-medium">YouTube</span>
-              </a>
-            </div>
           </div>
         </motion.div>
 

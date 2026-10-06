@@ -31,3 +31,24 @@ Stage Summary:
 - All 9 sections functional: Hero, About, Fight Career, Coaching, Iron Tiger Gym, Media, Contact, Footer
 - Mobile responsive, smooth scroll navigation, form validation with toast notifications
 - Ready for Vercel deployment
+
+---
+Task ID: 2
+Agent: Main Agent
+Task: Download and integrate MKP Training video into website Media section
+
+Work Log:
+- Downloaded mkp-training-video.mp4 (14.1 MB) from businesshustle.co.za
+- Refactored Media.tsx to support dual-video layout
+- Extracted VideoPlayer as reusable sub-component with play/pause, mute, fullscreen controls
+- Added training video as primary/featured video (full-width, "MKP Training" badge + "Featured" tag)
+- Kept existing promo video as secondary (centered, max-w-2xl, "Promo" badge)
+- Added fullscreen button (Maximize2 icon) to both video players
+- Added subtitle text in control bar for video context
+- Build verified: compiled successfully, 0 errors
+
+Stage Summary:
+- Training video integrated as featured content in Media section
+- Dual-video layout: primary training video (full-width) + secondary promo reel (centered)
+- Both videos have play/pause, mute/unmute, fullscreen, and YouTube link controls
+- Build passes cleanly
