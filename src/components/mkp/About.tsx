@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Shield, Brain, Users } from "lucide-react";
 import Image from "next/image";
+import EightLimbs from "./EightLimbs";
 
 const values = [
   {
@@ -25,13 +26,6 @@ const values = [
   },
 ];
 
-const limbs = [
-  { name: "Fists", desc: "Straight, hook, uppercut — the range-finders", index: "01" },
-  { name: "Elbows", desc: "Slicing close-range weapon, clinch entries", index: "02" },
-  { name: "Knees", desc: "Clinch dominance and mid-range power", index: "03" },
-  { name: "Shins", desc: "Low, mid, high — the long-range artillery", index: "04" },
-];
-
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
@@ -40,21 +34,6 @@ const containerVariants = {
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
-const limbContainerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.18 } },
-};
-
-const limbCardVariants = {
-  hidden: { opacity: 0, scale: 0.85, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
 };
 
 export default function About() {
@@ -111,109 +90,22 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* Right - Eight limbs + Corner image */}
+          {/* Right - Eight limbs interactive + Corner image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
+            {/* Interactive Eight Limbs diagram */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6 }}
-              className="glass-card rounded-xl p-6 sm:p-8 mb-6 gradient-border"
+              className="mb-6"
             >
-              <motion.h3
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="font-[family-name:var(--font-montserrat)] font-800 text-white text-xl sm:text-2xl uppercase mb-2"
-              >
-                The art of eight limbs
-              </motion.h3>
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-sm text-muted-foreground leading-relaxed mb-6"
-              >
-                Boxing has two weapons. Muay Thai has eight. Every session works one of them into the rest.
-              </motion.p>
-
-              {/* Animated limb cards */}
-              <motion.div
-                variants={limbContainerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-40px" }}
-                className="grid grid-cols-2 gap-3"
-              >
-                {limbs.map((limb) => (
-                  <motion.div
-                    key={limb.name}
-                    variants={limbCardVariants}
-                    whileHover={{
-                      scale: 1.04,
-                      borderColor: "rgba(220, 38, 38, 0.4)",
-                      boxShadow: "0 0 20px rgba(220, 38, 38, 0.15)",
-                    }}
-                    className="bg-white/[0.03] rounded-lg p-3 border border-white/5 cursor-default transition-colors"
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      <motion.span
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.2 }}
-                        className="w-1.5 h-1.5 bg-primary rounded-full"
-                      />
-                      <span className="text-primary text-xs font-mono font-bold uppercase tracking-wider">
-                        {limb.name}
-                      </span>
-                      <span className="text-white/20 text-[10px] font-mono ml-auto">
-                        {limb.index}
-                      </span>
-                    </div>
-                    <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
-                      {limb.desc}
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Animated pulse ring */}
-              <div className="relative mt-6 flex items-center justify-center">
-                <motion.div
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.3, 0, 0.3],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute w-8 h-8 rounded-full border border-primary/30"
-                />
-                <motion.div
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [0.5, 0.1, 0.5],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.3,
-                  }}
-                  className="absolute w-6 h-6 rounded-full border border-primary/40"
-                />
-                <div className="w-3 h-3 bg-primary rounded-full" />
-              </div>
+              <EightLimbs />
             </motion.div>
 
             {/* Corner image */}

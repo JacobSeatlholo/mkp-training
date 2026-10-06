@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Based on the image provided, here is the detailed description of the stick figure diagram and its components:\n\n### **Stick Figure Diagram & Limb Positions**\nThe diagram features a central, gray, minimalist stick figure representing a human body in a neutral stance. There are **8 circular nodes** (limb points) positioned at the extremities of the figure:\n\n*   **Head:** Positioned at the very top of the vertical spine line.\n*   **Left Elbow:** Positioned on the upper left side, roughly level with the shoulders.\n*   **Right Elbow:** Positioned on the upper right side, roughly level with the shoulders.\n*   **Left Fist:** Positioned on the mid-left side, lower than the elbow (representing an extended arm).\n*   **Right Fist:** Positioned on the mid-right side. **This node is currently active**, highlighted as a large solid red circle with a red outer ring.\n*   **Left Knee:** Positioned on the lower left side, at the \"hip\" joint area of the legs.\n*   **Right Knee:** Positioned on the lower right side, at the \"hip\" joint area of the legs.\n*   **Left Shin:** Positioned at the bottom left end of the left leg line.\n*   **Right Shin:** Positioned at the bottom right end of the right leg line.\n\n### **Button Titles and Descriptions**\nThere are 8 buttons arranged in two rows below the main text. Currently, button **02** is selected (indicated by a red border and red text). The labels for all 8 buttons are:\n\n1.  **01 FISTS**\n2.  **02 FISTS** *(Currently Selected)*\n3.  **03 ELBOWS**\n4.  **04 ELBOWS**\n5.  **05 KNEES**\n6.  **06 KNEES**\n7.  **07 SHINS**\n8.  **08 SHINS**\n\n**Visible Description Text:**\nBecause button **02 FISTS** is selected, the text panel to the right of the stick figure displays the following information:\n*   **Title:** **MAT**\n*   **Subtitle:** **FISTS**\n*   **Description:** \"Lead hand controls distance and sets the trap.\"",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1791293891,
+  "id": "20261006213801b75206532ba14c76",
+  "model": "glm-5v-turbo",
+  "object": "chat.completion",
+  "request_id": "20261006213801b75206532ba14c76",
+  "usage": {
+    "completion_tokens": 457,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 5082,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 5539
+  }
+}
