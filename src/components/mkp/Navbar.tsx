@@ -7,9 +7,9 @@ import Image from "next/image";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Fight Career", href: "#career" },
-  { label: "Coaching", href: "#coaching" },
-  { label: "Iron Tiger Gym", href: "#gym" },
+  { label: "Record", href: "#career" },
+  { label: "Training", href: "#coaching" },
+  { label: "Iron Tiger", href: "#gym" },
   { label: "Media", href: "#media" },
 ];
 
@@ -33,19 +33,19 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
+        <a href="#" className="flex items-center gap-2.5 group">
           <Image
-            src="/mkp-logo.svg"
+            src="/logo-white.svg"
             alt="MKP Training Logo"
-            width={40}
-            height={40}
-            className="w-9 h-9 sm:w-10 sm:h-10"
+            width={36}
+            height={36}
+            className="w-8 h-8 sm:w-9 sm:h-9"
           />
           <div className="flex flex-col leading-none">
-            <span className="font-[family-name:var(--font-montserrat)] font-800 text-base sm:text-lg tracking-tight text-white">
-              MKP <span className="text-primary">TRAINING</span>
+            <span className="font-[family-name:var(--font-montserrat)] font-800 text-sm sm:text-base tracking-[0.15em] text-white uppercase">
+              MKP <span className="text-primary">Training</span>
             </span>
-            <span className="text-[10px] sm:text-xs text-muted-foreground tracking-[0.2em] uppercase">
+            <span className="text-[10px] sm:text-[11px] text-muted-foreground tracking-[0.25em] uppercase font-mono">
               Cape Town
             </span>
           </div>

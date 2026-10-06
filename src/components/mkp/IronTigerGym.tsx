@@ -1,28 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Users, Swords, Shield } from "lucide-react";
+import { MapPin, Swords, Users, Shield } from "lucide-react";
 
 const features = [
   {
     icon: Swords,
-    title: "Elite Sparring Partners",
-    desc: "Train alongside active professional and amateur fighters who push each other to improve every single session.",
-  },
-  {
-    icon: Users,
-    title: "Real Fight Community",
-    desc: "Iron Tiger isn't a commercial gym — it's a fight team. The culture is built on respect, hard work, and shared ambition.",
+    title: "Hard rounds, honest feedback",
+    desc: "A gym is only as good as the rounds you get in it. Iron Tiger fields competitors across weight classes — whatever you are working on, there is someone on the floor who can give you the look you need.",
   },
   {
     icon: Shield,
-    title: "Authentic Gym Culture",
-    desc: "No egos, no shortcuts. Just honest training in a space that has produced some of Cape Town's toughest competitors.",
+    title: "Supervised from day one",
+    desc: "New members are not thrown in. First sessions are technical, paced, and supervised — you spar when you are ready to spar, not before.",
+  },
+  {
+    icon: Users,
+    title: "Partners who make you better",
+    desc: "Iron Tiger fields competitors across weight classes. Whatever you are working on, there is someone on the floor who can give you the look you need.",
   },
   {
     icon: MapPin,
-    title: "Heart of Cape Town",
-    desc: "Conveniently located in the Mother City, Iron Tiger Gym is the home base for MKP Training and its athletes.",
+    title: "Shop 1, 17 Jamieson Street",
+    desc: "Cape Town. The floor Michael trains and coaches on. Muay Thai the way it should be in the Mother City.",
   },
 ];
 
@@ -42,28 +42,17 @@ export default function IronTigerGym() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
           >
-            <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-              The Training Home
+            <span className="text-primary text-xs font-mono tracking-[0.28em] uppercase mb-4 block">
+              Home gym
             </span>
-            <h2 className="font-[family-name:var(--font-montserrat)] font-800 text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
-              Iron Tiger Gym.
-              <br />
-              <span className="text-muted-foreground">Where Warriors Are Made.</span>
+            <h2 className="font-[family-name:var(--font-montserrat)] font-900 text-3xl sm:text-4xl lg:text-5xl text-white leading-[0.95] tracking-tight uppercase mb-6">
+              Iron Tiger
             </h2>
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-6">
-              Iron Tiger Gym is more than a training facility — it's the heart of
-              Cape Town's combat sports community. This is where Michael K.
-              Pienaar trains, coaches, and prepares his athletes for battle. With a
-              no-nonsense approach to training and a culture built on mutual respect
-              and shared ambition, Iron Tiger has earned its reputation as one of
-              the most authentic fight gyms in the Mother City.
+              The floor Michael trains and coaches on. Cape Town Muay Thai the way it should be — hard rounds, honest feedback, and partners who make you better.
             </p>
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-              The gym hosts a roster of active professional and amateur fighters,
-              creating an environment where everyone — from first-timers to
-              seasoned competitors — is pushed to level up. When you train at Iron
-              Tiger through MKP Training, you're not just joining a gym. You're
-              joining a family.
+              A gym is only as good as the rounds you get in it. Iron Tiger fields competitors across weight classes, which means whatever you are working on, there is someone on the floor who can give you the look you need. New members are not thrown in — first sessions are technical, paced, and supervised.
             </p>
           </motion.div>
 
@@ -80,15 +69,33 @@ export default function IronTigerGym() {
                 key={f.title}
                 className="glass-card glass-card-hover rounded-xl p-5 transition-all duration-300 group"
               >
-                <f.icon className="w-6 h-6 text-primary mb-3" />
-                <h3 className="font-[family-name:var(--font-montserrat)] font-700 text-white text-base mb-2">
+                <f.icon className="w-5 h-5 text-primary mb-3" />
+                <h3 className="font-[family-name:var(--font-montserrat)] font-700 text-white text-sm sm:text-base mb-2">
                   {f.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   {f.desc}
                 </p>
               </div>
             ))}
+
+            {/* Map link */}
+            <a
+              href="https://maps.google.com/?q=17+Jamieson+Street+Cape+Town"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:col-span-2 glass-card glass-card-hover rounded-xl p-5 flex items-center gap-4 group transition-all duration-300"
+            >
+              <MapPin className="w-5 h-5 text-primary shrink-0" />
+              <div>
+                <span className="text-white text-sm font-medium group-hover:text-primary transition-colors">
+                  Open in maps
+                </span>
+                <p className="text-xs text-muted-foreground">
+                  Shop 1, 17 Jamieson Street, Cape Town
+                </p>
+              </div>
+            </a>
           </motion.div>
         </div>
       </div>

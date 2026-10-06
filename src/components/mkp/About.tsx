@@ -1,36 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Target, Brain, Heart } from "lucide-react";
+import { Shield, Brain, Users } from "lucide-react";
+import Image from "next/image";
 
 const values = [
   {
     icon: Shield,
-    title: "Discipline",
-    desc: "Every session is built on unbreakable discipline — the foundation of every champion. Consistency over motivation, every single day.",
-  },
-  {
-    icon: Target,
-    title: "Technical Precision",
-    desc: "Every strike, every angle, every movement is deliberate. Michael's coaching obsesses over the details that separate good from great.",
+    title: "Technical first",
+    num: "01",
+    desc: "Nothing gets added until the base holds up. Stance, balance, and the shift between them — then the weapon.",
   },
   {
     icon: Brain,
-    title: "Mental Toughness",
-    desc: "The fight is won before you step in the cage. MKP Training builds the unshakable mindset required to perform under extreme pressure.",
+    title: "Composure",
+    num: "02",
+    desc: "Panic costs more rounds than any gap in technique. Sessions are built to keep you thinking when the pace climbs.",
   },
   {
-    icon: Heart,
-    title: "Authentic Culture",
-    desc: "Rooted in Cape Town's martial arts heritage, MKP Training is about real fighting, real community, and real results.",
+    icon: Users,
+    title: "Gym culture",
+    num: "03",
+    desc: "Real Muay Thai in the Mother City. Hard rounds, honest feedback, and a floor where beginners are looked after.",
   },
 ];
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 
 const itemVariants = {
@@ -43,72 +40,103 @@ export default function About() {
     <section id="about" className="relative py-24 sm:py-32">
       <div className="section-divider mb-24" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="max-w-3xl mb-16"
-        >
-          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-            About Michael
-          </span>
-          <h2 className="font-[family-name:var(--font-montserrat)] font-800 text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
-            Forged in the Ring.<br />
-            <span className="text-muted-foreground">Built to Coach.</span>
-          </h2>
-          <div className="space-y-4 text-muted-foreground leading-relaxed text-base sm:text-lg">
-            <p>
-              Michael K. Pienaar is a professional fighter and elite-level coach
-              based in Cape Town, South Africa. Known inside the cage for his
-              explosive striking, high fight IQ, and unrelenting pressure, Michael
-              has competed at the highest levels of the sport under banners like
-              the Professional Fighting Championships (PFC).
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left - Text + Values */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="text-primary text-xs font-mono tracking-[0.28em] uppercase mb-4 block">
+              Who you&apos;re training with
+            </span>
+            <h2 className="font-[family-name:var(--font-montserrat)] font-900 text-4xl sm:text-5xl lg:text-6xl text-white leading-[0.95] tracking-tight uppercase mb-6">
+              Michael Keegan<br />
+              <span className="text-primary">Pienaar</span>
+            </h2>
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
+              A competitor and coach out of Iron Tiger, Cape Town. Seven bouts in, he coaches muay thai · kickboxing · hiit — the same technical, unhurried approach he fights with.
             </p>
-            <p>
-              As a head coach at Iron Tiger Gym, Michael channels the same
-              intensity and technical mastery that defines his fighting style into
-              every athlete he works with. From first-timers stepping onto the mats
-              for the first time to professional fighters preparing for their next
-              bout, MKP Training delivers an experience that is deeply personal,
-              technically precise, and fiercely results-driven.
-            </p>
-            <p>
-              His philosophy is simple: master the fundamentals, condition the body
-              and mind for war, and never stop evolving. Whether you want to compete,
-              get fight-fit, or simply learn the art of striking from someone who
-              lives it — MKP Training is where you start.
-            </p>
-          </div>
-        </motion.div>
 
-        {/* Core Values Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
-        >
-          {values.map((v) => (
+            {/* Values */}
             <motion.div
-              key={v.title}
-              variants={itemVariants}
-              className="glass-card glass-card-hover rounded-xl p-6 transition-all duration-300 group"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              className="space-y-6"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <v.icon className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="font-[family-name:var(--font-montserrat)] font-700 text-white text-lg mb-2">
-                {v.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {v.desc}
-              </p>
+              {values.map((v) => (
+                <motion.div
+                  key={v.title}
+                  variants={itemVariants}
+                  className="flex gap-4 group"
+                >
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <span className="font-mono text-primary text-xs font-bold">{v.num}</span>
+                  </div>
+                  <div>
+                    <h3 className="font-[family-name:var(--font-montserrat)] font-700 text-white text-base sm:text-lg mb-1">
+                      {v.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {v.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </motion.div>
+
+          {/* Right - Eight limbs + Corner image */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <div className="glass-card rounded-xl p-6 sm:p-8 mb-6">
+              <h3 className="font-[family-name:var(--font-montserrat)] font-800 text-white text-xl sm:text-2xl uppercase mb-2">
+                The art of eight limbs
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                Boxing has two weapons. Muay Thai has eight. Every session works one of them into the rest.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { name: "Fists", desc: "Straight, hook, uppercut — the range-finders" },
+                  { name: "Elbows", desc: "Slicing close-range weapon, clinch entries" },
+                  { name: "Knees", desc: "Clinch dominance and mid-range power" },
+                  { name: "Shins", desc: "Low, mid, high — the long-range artillery" },
+                ].map((limb) => (
+                  <div
+                    key={limb.name}
+                    className="bg-white/[0.03] rounded-lg p-3 border border-white/5"
+                  >
+                    <span className="text-primary text-xs font-mono font-bold uppercase tracking-wider">
+                      {limb.name}
+                    </span>
+                    <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 leading-relaxed">
+                      {limb.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Corner image */}
+            <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
+              <Image
+                src="/corner.jpg"
+                alt="Michael Keegan Pienaar in the corner between rounds"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent" />
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

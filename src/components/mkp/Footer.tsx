@@ -1,15 +1,14 @@
 "use client";
 
-import { Flame, Instagram, Youtube, ArrowUp } from "lucide-react";
+import { Flame, Instagram, Youtube, ArrowUp, Facebook } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = [
   { label: "About", href: "#about" },
-  { label: "Fight Career", href: "#career" },
-  { label: "Coaching", href: "#coaching" },
-  { label: "Iron Tiger Gym", href: "#gym" },
+  { label: "Record", href: "#career" },
+  { label: "Training", href: "#coaching" },
+  { label: "Iron Tiger", href: "#gym" },
   { label: "Media", href: "#media" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Footer() {
@@ -21,26 +20,25 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
               <Image
-                src="/mkp-logo.svg"
+                src="/logo-white.svg"
                 alt="MKP Training"
-                width={32}
-                height={32}
-                className="w-8 h-8"
+                width={28}
+                height={28}
+                className="w-7 h-7"
               />
-              <span className="font-[family-name:var(--font-montserrat)] font-800 text-base tracking-tight text-white">
-                MKP <span className="text-primary">TRAINING</span>
+              <span className="font-[family-name:var(--font-montserrat)] font-800 text-sm tracking-[0.15em] text-white uppercase">
+                MKP <span className="text-primary">Training</span>
               </span>
             </a>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Precision striking and elite fight preparation by Michael K.
-              Pienaar. Based at Iron Tiger Gym, Cape Town.
+              Muay Thai coaching with Michael Keegan Pienaar at Iron Tiger, Cape Town.
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wide uppercase">
-              Navigation
+            <h4 className="text-white font-semibold text-xs mb-4 tracking-[0.2em] uppercase">
+              Sections
             </h4>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
@@ -58,8 +56,8 @@ export default function Footer() {
 
           {/* Programmes */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wide uppercase">
-              Programmes
+            <h4 className="text-white font-semibold text-xs mb-4 tracking-[0.2em] uppercase">
+              Training
             </h4>
             <ul className="space-y-2">
               <li>
@@ -67,7 +65,7 @@ export default function Footer() {
                   href="#coaching"
                   className="text-sm text-muted-foreground hover:text-white transition-colors"
                 >
-                  Private Striking
+                  Private sessions
                 </a>
               </li>
               <li>
@@ -75,7 +73,7 @@ export default function Footer() {
                   href="#coaching"
                   className="text-sm text-muted-foreground hover:text-white transition-colors"
                 >
-                  Fight Camp Prep
+                  Group classes
                 </a>
               </li>
               <li>
@@ -83,7 +81,7 @@ export default function Footer() {
                   href="#coaching"
                   className="text-sm text-muted-foreground hover:text-white transition-colors"
                 >
-                  Group Classes
+                  HIIT & Conditioning
                 </a>
               </li>
             </ul>
@@ -91,7 +89,7 @@ export default function Footer() {
 
           {/* Socials & Badge */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wide uppercase">
+            <h4 className="text-white font-semibold text-xs mb-4 tracking-[0.2em] uppercase">
               Follow
             </h4>
             <div className="flex items-center gap-3 mb-6">
@@ -103,6 +101,15 @@ export default function Footer() {
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4 text-muted-foreground" />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4 text-muted-foreground" />
               </a>
               <a
                 href="https://youtube.com/watch?v=vsDo6ESU_Tc"
@@ -127,8 +134,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} MKP Training &amp; Michael K.
-            Pienaar. All rights reserved.
+            &copy; 2026 MKP Training · Michael Keegan Pienaar
           </p>
           <a
             href="#hero"

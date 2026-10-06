@@ -1,47 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Crosshair, Dumbbell, Users, ArrowRight } from "lucide-react";
+import { Crosshair, Users, Dumbbell, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const programs = [
   {
     icon: Crosshair,
-    title: "1-on-1 Private Striking & MMA",
-    tag: "Most Popular",
-    desc: "Personalised coaching sessions focused on technique refinement, pad work, fight IQ development, and combat strategy. Every session is tailored to your skill level and goals — whether you're a complete beginner or a seasoned competitor looking to sharpen your arsenal.",
+    title: "1-on-1 Private sessions",
+    tag: "Private",
+    desc: "One hour, one focus. Technique broken down to its parts, put back together on the pads, then pressure-tested.",
     features: [
-      "Customised striking technique drills",
-      "Pad work & mitt work with pro feedback",
-      "Fight IQ & situational sparring strategy",
-      "Video analysis of your combinations",
+      "Stance, balance and the shift between them",
+      "Pad rounds built around your gaps, not a stock circuit",
+      "Ring IQ — reading distance, timing and tells",
+      "Muay Thai or kickboxing, whichever you're chasing",
     ],
-    cta: "Book Private Session",
-  },
-  {
-    icon: Dumbbell,
-    title: "Fight Camp Preparation",
-    tag: "For Competitors",
-    desc: "A comprehensive, periodised training programme designed for fighters preparing for amateur or professional bouts. Covering conditioning, sparring strategy, weight management, and the mental preparation required to perform under extreme pressure on fight night.",
-    features: [
-      "Periodised strength & conditioning",
-      "Sparring strategy & game planning",
-      "Weight-cut management & nutrition guidance",
-      "Fight-week mental preparation protocols",
-    ],
-    cta: "Start Fight Camp",
+    cta: "Enquire",
   },
   {
     icon: Users,
-    title: "Group Classes at Iron Tiger",
-    tag: "Community",
-    desc: "High-energy group training sessions at Iron Tiger Gym. A mix of striking fundamentals, conditioning circuits, and controlled sparring in a supportive, team-oriented environment. Perfect for building fitness, learning self-defence, and connecting with Cape Town's fight community.",
+    title: "At Iron Tiger — Group classes",
+    tag: "Group",
+    desc: "Full sessions on the gym floor. Beginners welcome — everyone starts on the same first day.",
     features: [
-      "Striking fundamentals & combinations",
-      "High-intensity conditioning circuits",
-      "Partner drills & controlled sparring",
-      "Access to Iron Tiger Gym community",
+      "Warm-up, technique, pads, rounds",
+      "Scaled for first-timers through to competitors",
+      "Clinch work every week",
+      "No prior experience needed",
     ],
-    cta: "Join a Class",
+    cta: "Enquire",
+  },
+  {
+    icon: Dumbbell,
+    title: "HIIT & Conditioning",
+    tag: "Fitness",
+    desc: "The engine behind the technique. Striking-based conditioning that gets you fit without needing a fight.",
+    features: [
+      "Rounds-based intervals, not random circuits",
+      "Bag and pad work as the conditioning",
+      "Core, hips and grip — where strikers actually fatigue",
+      "Come for the fitness, keep the skills",
+    ],
+    cta: "Enquire",
   },
 ];
 
@@ -60,80 +61,90 @@ export default function Coaching() {
     <section id="coaching" className="relative py-24 sm:py-32">
       <div className="section-divider mb-24" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="max-w-2xl mb-16"
-        >
-          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-            Coaching & Programmes
-          </span>
-          <h2 className="font-[family-name:var(--font-montserrat)] font-800 text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-4">
-            Train Like a Pro.<br />
-            <span className="text-muted-foreground">No Shortcuts.</span>
-          </h2>
-          <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-            Whether you're stepping onto the mats for the first time or preparing
-            for a professional bout, MKP Training has a programme built for you.
-            Every session is delivered with the same intensity and attention to
-            detail that Michael brings to his own fight camps.
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left - Header + Gym class image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="text-primary text-xs font-mono tracking-[0.28em] uppercase mb-4 block">
+              Coaching
+            </span>
+            <h2 className="font-[family-name:var(--font-montserrat)] font-900 text-3xl sm:text-4xl lg:text-5xl text-white leading-[0.95] tracking-tight uppercase mb-4">
+              What training<br />looks like
+            </h2>
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-6">
+              Three ways in. All of them start with a conversation about where you are now.
+            </p>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid lg:grid-cols-3 gap-6"
-        >
-          {programs.map((prog) => (
-            <motion.div
-              key={prog.title}
-              variants={itemVariants}
-              className="glass-card rounded-xl p-6 sm:p-8 flex flex-col transition-all duration-300 group gradient-border hover:border-primary/20"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <prog.icon className="w-6 h-6 text-primary" />
-                </div>
-                <span className="text-[11px] bg-white/5 text-muted-foreground px-3 py-1 rounded-full font-medium tracking-wide uppercase">
-                  {prog.tag}
-                </span>
-              </div>
+            {/* Gym class image */}
+            <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
+              <Image
+                src="/gym-class.jpg"
+                alt="Group training session at Iron Tiger Gym"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent" />
+            </div>
+          </motion.div>
 
-              <h3 className="font-[family-name:var(--font-montserrat)] font-700 text-white text-lg sm:text-xl mb-3">
-                {prog.title}
-              </h3>
-
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-                {prog.desc}
-              </p>
-
-              <ul className="space-y-2 mb-8">
-                {prog.features.map((f) => (
-                  <li
-                    key={f}
-                    className="flex items-start gap-2 text-sm text-muted-foreground"
-                  >
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all duration-200"
+          {/* Right - Program cards */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="space-y-5"
+          >
+            {programs.map((prog) => (
+              <motion.div
+                key={prog.title}
+                variants={itemVariants}
+                className="glass-card rounded-xl p-6 sm:p-7 flex flex-col transition-all duration-300 group gradient-border hover:border-primary/20"
               >
-                {prog.cta}
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <prog.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-[11px] bg-white/5 text-muted-foreground px-3 py-1 rounded-full font-medium tracking-wide uppercase font-mono">
+                    {prog.tag}
+                  </span>
+                </div>
+
+                <h3 className="font-[family-name:var(--font-montserrat)] font-700 text-white text-base sm:text-lg mb-2">
+                  {prog.title}
+                </h3>
+
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  {prog.desc}
+                </p>
+
+                <ul className="space-y-2 mb-6">
+                  {prog.features.map((f) => (
+                    <li
+                      key={f}
+                      className="flex items-start gap-2 text-sm text-muted-foreground"
+                    >
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all duration-200"
+                >
+                  {prog.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

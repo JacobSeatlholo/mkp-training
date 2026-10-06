@@ -17,27 +17,30 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "MKP Training | Precision Striking. Elite Conditioning. Championship Mindset.",
+  title: "MKP Training — Muay Thai coaching in Cape Town",
   description:
-    "Michael K. Pienaar — professional fighter and elite coach at Iron Tiger Gym, Cape Town. Private striking, MMA coaching, and fight camp preparation.",
+    "Muay Thai, kickboxing and HIIT coaching with Michael Keegan Pienaar — private sessions and group classes out of Iron Tiger, Cape Town.",
   keywords: [
     "MKP Training",
-    "Michael K Pienaar",
+    "Michael Keegan Pienaar",
     "Iron Tiger Gym",
-    "Cape Town MMA",
+    "Cape Town",
+    "Muay Thai",
+    "kickboxing",
+    "HIIT",
     "striking coach",
     "fight training",
     "MMA Cape Town",
     "combat sports",
   ],
-  authors: [{ name: "Michael K. Pienaar" }],
+  authors: [{ name: "Michael Keegan Pienaar" }],
   icons: {
-    icon: "/mkp-logo.svg",
+    icon: "/logo-white.svg",
   },
   openGraph: {
-    title: "MKP Training | Precision Striking. Elite Conditioning.",
+    title: "MKP Training — Muay Thai coaching in Cape Town",
     description:
-      "Train with Michael K. Pienaar — professional fighter and elite coach at Iron Tiger Gym, Cape Town.",
+      "Muay Thai, kickboxing and HIIT coaching with Michael Keegan Pienaar — private sessions and group classes out of Iron Tiger, Cape Town.",
     type: "website",
   },
 };

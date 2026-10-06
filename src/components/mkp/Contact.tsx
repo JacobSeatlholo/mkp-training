@@ -13,10 +13,10 @@ import {
 import { toast } from "sonner";
 
 const trainingOptions = [
-  "Private 1-on-1 Striking",
-  "MMA Coaching",
-  "Fight Camp Preparation",
-  "Group Classes",
+  "Private sessions",
+  "Group classes",
+  "HIIT & conditioning",
+  "Something else",
 ];
 
 export default function Contact() {
@@ -44,7 +44,7 @@ export default function Contact() {
       return;
     }
     setSubmitted(true);
-    toast.success("Message sent! Michael will be in touch soon.");
+    toast.success("Enquiry sent. Michael will come back with a plan and a time.");
   };
 
   return (
@@ -61,18 +61,14 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="max-w-2xl mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4 block">
-            Get Started
+          <span className="text-primary text-xs font-mono tracking-[0.28em] uppercase mb-4 block">
+            Get started
           </span>
-          <h2 className="font-[family-name:var(--font-montserrat)] font-800 text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-4">
-            Ready to Train?
-            <br />
-            <span className="text-muted-foreground">Let's Make It Happen.</span>
+          <h2 className="font-[family-name:var(--font-montserrat)] font-900 text-3xl sm:text-4xl lg:text-5xl text-white leading-[0.95] tracking-tight uppercase mb-4">
+            Book a session
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-            Fill in the form below or reach out directly. Whether you want to book
-            a private session, join a group class, or start a full fight camp —
-            Michael is ready to help you level up.
+            Tell Michael where you&apos;re at and what you want to work on. He&apos;ll come back with a plan and a time.
           </p>
         </motion.div>
 
@@ -89,11 +85,10 @@ export default function Contact() {
               <div className="glass-card rounded-xl p-8 sm:p-12 text-center">
                 <CheckCircle2 className="w-16 h-16 text-primary mx-auto mb-4" />
                 <h3 className="font-[family-name:var(--font-montserrat)] font-700 text-white text-2xl mb-2">
-                  Message Sent
+                  Enquiry sent
                 </h3>
                 <p className="text-muted-foreground">
-                  Thanks, {formData.name || "fighter"}. Michael will get back to you
-                  within 24 hours. In the meantime, stay sharp.
+                  Thanks, {formData.name || "fighter"}. Michael will come back with a plan and a time. Stay sharp.
                 </p>
               </div>
             ) : (
@@ -111,7 +106,7 @@ export default function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Your full name"
+                      placeholder="Your name"
                       className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all text-sm"
                     />
                   </div>
@@ -133,7 +128,7 @@ export default function Contact() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-white mb-1.5">
-                      Phone
+                      Phone <span className="text-muted-foreground text-xs">(optional)</span>
                     </label>
                     <input
                       type="tel"
@@ -146,7 +141,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-white mb-1.5">
-                      Training Interest <span className="text-primary">*</span>
+                      Interested in <span className="text-primary">*</span>
                     </label>
                     <select
                       name="interest"
@@ -155,7 +150,7 @@ export default function Contact() {
                       className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all text-sm appearance-none"
                     >
                       <option value="" className="bg-[#141414]">
-                        Select programme...
+                        Select...
                       </option>
                       {trainingOptions.map((opt) => (
                         <option key={opt} value={opt} className="bg-[#141414]">
@@ -175,7 +170,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Tell Michael about your goals, experience level, and what you're looking for..."
+                    placeholder="Tell Michael where you're at and what you want to work on..."
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all text-sm resize-none"
                   />
                 </div>
@@ -185,7 +180,7 @@ export default function Contact() {
                   className="w-full glow-red bg-primary hover:bg-red-700 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
                   <Send className="w-4 h-4" />
-                  Send Message
+                  Send enquiry
                 </button>
               </form>
             )}
@@ -199,17 +194,8 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="lg:col-span-2 space-y-4"
           >
- <div className="glass-card rounded-xl p-5 flex items-start gap-4 group hover:border-primary/20 transition-all">
-              <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-              <div>
-                <h4 className="text-white font-medium text-sm mb-1">Location</h4>
-                <p className="text-sm text-muted-foreground">
-                  Iron Tiger Gym, Cape Town, South Africa
-                </p>
-              </div>
-            </div>
             <a
-              href="https://wa.me/27"
+              href="https://wa.me/27609601037"
               target="_blank"
               rel="noopener noreferrer"
               className="glass-card rounded-xl p-5 flex items-start gap-4 group hover:border-green-500/20 transition-all block"
@@ -218,28 +204,28 @@ export default function Contact() {
               <div>
                 <h4 className="text-white font-medium text-sm mb-1">WhatsApp</h4>
                 <p className="text-sm text-muted-foreground group-hover:text-green-400 transition-colors">
-                  Message directly on WhatsApp
+                  +27 60 960 1037
                 </p>
               </div>
             </a>
             <a
-              href="mailto:info@mkptraining.co.za"
+              href="mailto:mkp-training@app.businesshustle.co.za"
               className="glass-card rounded-xl p-5 flex items-start gap-4 group hover:border-primary/20 transition-all block"
             >
               <Mail className="w-5 h-5 text-primary mt-0.5 shrink-0" />
               <div>
                 <h4 className="text-white font-medium text-sm mb-1">Email</h4>
-                <p className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
-                  info@mkptraining.co.za
+                <p className="text-sm text-muted-foreground group-hover:text-primary transition-colors break-all">
+                  mkp-training@app.businesshustle.co.za
                 </p>
               </div>
             </a>
             <div className="glass-card rounded-xl p-5 flex items-start gap-4">
-              <Phone className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+              <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
               <div>
-                <h4 className="text-white font-medium text-sm mb-1">Phone</h4>
+                <h4 className="text-white font-medium text-sm mb-1">Location</h4>
                 <p className="text-sm text-muted-foreground">
-                  Available on request
+                  Shop 1, 17 Jamieson Street, Cape Town
                 </p>
               </div>
             </div>
