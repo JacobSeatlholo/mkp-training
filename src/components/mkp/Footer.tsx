@@ -1,6 +1,6 @@
 "use client";
 
-import { Flame, Instagram, Youtube, ArrowUp, Facebook } from "lucide-react";
+import { Flame, Instagram, Youtube, ArrowUp, Facebook, Heart, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = [
@@ -133,9 +133,20 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            &copy; 2026 MKP Training · Michael Keegan Pienaar
-          </p>
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <p className="text-xs text-muted-foreground">
+              &copy; 2026 MKP Training · Michael Keegan Pienaar
+            </p>
+            <a
+              href="https://www.businesshustle.co.za"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors group"
+            >
+              Built with <Heart className="w-3 h-3 text-primary group-hover:scale-110 transition-transform" /> by Business Hustle
+              <ExternalLink className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </a>
+          </div>
           <a
             href="#hero"
             className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
