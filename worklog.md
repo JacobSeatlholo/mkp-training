@@ -70,3 +70,22 @@ Stage Summary:
 - All code + 14MB training video pushed to GitHub
 - Remote repo: github.com:JacobSeatlholo/mkp-training.git (main branch)
 - Used dulwich (pure Python git) + paramiko (pure Python SSH) as workaround for missing openssh-client
+
+---
+Task ID: 4
+Agent: Main Agent
+Task: Fix commit author email and force push to GitHub
+
+Work Log:
+- Deployment blocked: commit author email "z@container" not valid for GitHub
+- Set git config user.email to "JacobSeatlholo@users.noreply.github.com"
+- Set git config user.name to "JacobSeatlholo"
+- Rewrote all 9 commits using git filter-branch with correct author/committer email
+- Verified all commits now have JacobSeatlholo@users.noreply.github.com
+- Force pushed to GitHub (commit b1e0580)
+- Verified remote HEAD matches: b1e0580d5ef6ee7d18418ba47837a36a79aa72d8
+
+Stage Summary:
+- All commits rewritten with valid GitHub author email
+- Force pushed to github.com:JacobSeatlholo/mkp-training.git (main branch)
+- Deployment should no longer be blocked by invalid email
