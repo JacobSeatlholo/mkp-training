@@ -1,17 +1,11 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Play, ExternalLink, Youtube, Newspaper } from "lucide-react";
+import { Play, Pause, ExternalLink, Youtube, Newspaper, Volume2, VolumeX } from "lucide-react";
 import Image from "next/image";
 
 const mediaItems = [
-  {
-    type: "video",
-    title: "Fight footage",
-    subtitle: "Fight nights and gym work",
-    url: "https://youtube.com/watch?v=vsDo6ESU_Tc",
-    icon: Youtube,
-  },
   {
     type: "article",
     title: "Cape Times — PFC Event Coverage",
@@ -29,6 +23,26 @@ const galleryImages = [
 ];
 
 export default function Media() {
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (playing) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+    setPlaying(!playing);
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !muted;
+    setMuted(!muted);
+  };
+
   return (
     <section id="media" className="relative py-24 sm:py-32">
       <div className="section-divider mb-24" />
@@ -51,8 +65,88 @@ export default function Media() {
           </p>
         </motion.div>
 
+        {/* Hero Video */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <div className="relative rounded-xl overflow-hidden group gradient-border">
+            <video
+              ref={videoRef}
+              src="/mkp-promo.mp4"
+              muted
+              loop
+              playsInline
+              poster="/hero-portrait.jpg"
+              className="w-full aspect-video object-cover"
+            />
+
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+            {/* Play/Pause button */}
+            <button
+              onClick={togglePlay}
+              className="absolute inset-0 flex items-center justify-center z-10 cursor-pointer"
+              aria-label={playing ? "Pause video" : "Play video"}
+            >
+              <motion.div
+                initial={false}
+                animate={{
+                  scale: playing ? 0 : 1,
+                  opacity: playing ? 0 : 1,
+                }}
+                transition={{ duration: 0.2 }}
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center glow-red-sm group-hover:bg-primary transition-all"
+              >
+                <Play className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1" />
+              </motion.div>
+            </button>
+
+            {/* Controls bar */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between z-10">
+              <div className="flex items-center gap-2">
+                {playing && (
+                  <button
+                    onClick={togglePlay}
+                    className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
+                    aria-label="Pause"
+                  >
+                    <Pause className="w-4 h-4 text-white" />
+                  </button>
+                )}
+                <button
+                  onClick={toggleMute}
+                  className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
+                  aria-label={muted ? "Unmute" : "Mute"}
+                >
+                  {muted ? (
+                    <VolumeX className="w-4 h-4 text-white" />
+                  ) : (
+                    <Volume2 className="w-4 h-4 text-white" />
+                  )}
+                </button>
+              </div>
+
+              {/* YouTube link */}
+              <a
+                href="https://youtube.com/watch?v=vsDo6ESU_Tc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/20 transition-colors"
+              >
+                <Youtube className="w-4 h-4 text-white" />
+                <span className="text-xs text-white font-medium">YouTube</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Featured media links */}
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-12">
+        <div className="grid sm:grid-cols-1 gap-4 sm:gap-6 mb-12">
           {mediaItems.map((item) => (
             <motion.a
               key={item.title}
@@ -66,11 +160,7 @@ export default function Media() {
               className="glass-card glass-card-hover rounded-xl p-6 sm:p-8 flex items-start gap-4 group transition-all duration-300"
             >
               <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                {item.type === "video" ? (
-                  <Play className="w-5 h-5 text-primary" />
-                ) : (
-                  <item.icon className="w-5 h-5 text-primary" />
-                )}
+                <item.icon className="w-5 h-5 text-primary" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-[family-name:var(--font-montserrat)] font-700 text-white text-base sm:text-lg mb-1 group-hover:text-primary transition-colors">
@@ -80,7 +170,7 @@ export default function Media() {
                   {item.subtitle}
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs text-primary font-medium">
-                  {item.type === "video" ? "Watch" : "Read the report"}
+                  Read the report
                   <ExternalLink className="w-3 h-3" />
                 </span>
               </div>
