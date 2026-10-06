@@ -63,7 +63,7 @@ export default function Hero() {
             className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed"
           >
             Michael Keegan Pienaar coaches out of Iron Tiger in Cape Town —{" "}
-            <span className="text-white font-medium">muay thai · kickboxing · hiit</span>. Private sessions and classes on the gym floor, technique first.
+            <span className="text-white font-medium">muay thai · kickboxing · HIIT</span>. Private sessions and classes on the gym floor, technique first.
           </motion.p>
 
           <motion.div

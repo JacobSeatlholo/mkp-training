@@ -57,7 +57,7 @@ export default function About() {
               <span className="text-primary">Pienaar</span>
             </h2>
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
-              A competitor and coach out of Iron Tiger, Cape Town. Seven bouts in, he coaches muay thai · kickboxing · hiit — the same technical, unhurried approach he fights with.
+              A competitor and coach out of Iron Tiger, Cape Town. Seven bouts in, he coaches muay thai · kickboxing · HIIT — the same technical, unhurried approach he fights with.
             </p>
 
             {/* Values */}
