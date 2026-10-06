@@ -52,3 +52,21 @@ Stage Summary:
 - Dual-video layout: primary training video (full-width) + secondary promo reel (centered)
 - Both videos have play/pause, mute/unmute, fullscreen, and YouTube link controls
 - Build passes cleanly
+
+---
+Task ID: 3
+Agent: Main Agent
+Task: Push MKP Training website (with video) to GitHub
+
+Work Log:
+- SSH binary not available in container; installed paramiko + dulwich Python libraries
+- Built custom ParamikoSSHVendor implementing dulwich's SSHVendor interface
+- Created ChannelReader/ChannelWriter for bidirectional paramiko channel I/O
+- Fetched remote refs (2 refs: HEAD, refs/heads/main)
+- Successfully pushed main branch (commit 9010e19) to git@github.com:JacobSeatlholo/mkp-training.git
+- Verified remote HEAD matches local: 9010e19bd2d21f15986088e7c36ab407353c9530
+
+Stage Summary:
+- All code + 14MB training video pushed to GitHub
+- Remote repo: github.com:JacobSeatlholo/mkp-training.git (main branch)
+- Used dulwich (pure Python git) + paramiko (pure Python SSH) as workaround for missing openssh-client
